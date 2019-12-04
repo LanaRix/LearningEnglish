@@ -30,12 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Введите имя" />
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="331dp"
             android:layout_height="wrap_content"
             android:text="Пароль:"
-            android:textSize="24dp"
-            android:textColor="@color/TitleColor"/>
+            android:textColor="@color/TitleColor"
+            android:textSize="24dp" />
+
 
         <EditText
             android:id="@+id/inputPassword"

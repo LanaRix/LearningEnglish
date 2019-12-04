@@ -15,4 +15,8 @@
             android:id="@+id/action_settings"
             android:title="Настройки"
             android:checked="true" />
+        <item
+            android:id="@+id/help"
+            android:title="Помощь"
+            android:checked="true" />
 </menu>

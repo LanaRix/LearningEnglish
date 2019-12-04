@@ -29,14 +29,54 @@ public class MainActivity extends AppCompatActivity {
         exitBtn = (Button) findViewById(R.id.exitBtn);
         openListBtn = (Button) findViewById(R.id.openListBtn);
         learningBtn = (Button) findViewById(R.id.learningBtn);
-
+        Bundle arguments = getIntent().getExtras();
+        if (arguments !=null)
+        {
+            currentUserId=arguments.getInt("ID");
+            text.setText(arguments.getString("NAME"));
+        }
+        else
+        {
+            currentUserId=0;
+            text.setText("Вход не выполнен");
+        }
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.newWordBtn: break;
-                    case R.id.openListBtn: break;
+                    case R.id.openListBtn:
+                        if (currentUserId==0)
+                        {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                            builder.setTitle("НЕ ВПОЛНЕН ВХОД")
+                                    .setMessage("Для выполнения данного действия необходимо авторизоваться в системе. Перейти на странцу авторизации?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Да",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    Intent intent = new Intent(MainActivity.this, AuthandregistrActivity.class);
+                                                    startActivity(intent);
+                                                }
+                                            })
+                                    .setNegativeButton("Нет",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
+                        else
+                        {
+                            Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
+                            intent.putExtra("ID", currentUserId);
+                            intent.putExtra("NAME", text.getText().toString());
+                            startActivity(intent);
+                        }
+                        break;
                     case R.id.learningBtn: break;
                     case R.id.exitBtn:
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -66,24 +106,6 @@ public class MainActivity extends AppCompatActivity {
         openListBtn.setOnClickListener(onClickListener);
         learningBtn.setOnClickListener(onClickListener);
         exitBtn.setOnClickListener(onClickListener);
-
-        text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentUserId==0)
-                {
-                    Intent intent = new Intent(MainActivity.this, AuthandregistrActivity.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    Toast toast= Toast.makeText(MainActivity.this, "Вы вышли из учетной записи", Toast.LENGTH_SHORT);
-                    toast.show();
-                    currentUserId=0;
-                    text.setText("Вход не выполнен. Войти");
-                }
-            }
-        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast toast= Toast.makeText(MainActivity.this, "Вы вышли из учетной записи", Toast.LENGTH_SHORT);
                     toast.show();
                     currentUserId=0;
-                    text.setText("Вход не выполнен. Войти");
+                    text.setText("Вход не выполнен");
                 }
                 break;
         }
