@@ -8,7 +8,7 @@
         android:id="@+id/addBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Добавить категорию"
+        android:text="Добавить слово"
         android:background="@color/btnColor"
         android:onClick="AddCategory"/>
 
@@ -18,11 +18,23 @@
         android:layout_height="wrap_content"
         android:hint="Search"
         />
-
+    <Spinner
+        android:id="@+id/chooseCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/wordsview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/ListColor">
+        android:background="@color/ListColor"
+        android:layout_weight="1">
+    </ListView>
+    <ListView
+        android:id="@+id/translateview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ListColor"
+        android:layout_weight="2">
     </ListView>
 </LinearLayout>

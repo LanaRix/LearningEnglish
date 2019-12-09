@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backColor">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Слово"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="@color/TitleColor"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Слово:"
+        android:textSize="24dp"
+        android:textColor="@color/TitleColor"/>
+
+    <EditText
+        android:id="@+id/inputWordName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Часть речи:"
+        android:textColor="@color/TitleColor"
+        android:textSize="24dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+    <Button
+        android:id="@+id/addpartBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Категория:"
+        android:textColor="@color/TitleColor"
+        android:textSize="24dp" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+    <TextView
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        android:text="Первый перевод:"
+        android:textColor="@color/TitleColor"
+        android:textSize="24dp" />
+    <EditText
+        android:id="@+id/wordTranslate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/addWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Buttons"
+        android:text="Добавить"/>
+
+</LinearLayout>

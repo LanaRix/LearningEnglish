@@ -15,7 +15,7 @@ import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static String DB_NAME = "Languages.db";
+    private static String DB_NAME = "Langis.db";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 

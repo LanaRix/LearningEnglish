@@ -45,7 +45,38 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.newWordBtn: break;
+                    case R.id.newWordBtn:
+                        if (currentUserId==0)
+                        {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                            builder.setTitle("НЕ ВПОЛНЕН ВХОД")
+                                    .setMessage("Для выполнения данного действия необходимо авторизоваться в системе. Перейти на странцу авторизации?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Да",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    Intent intent = new Intent(MainActivity.this, AuthandregistrActivity.class);
+                                                    startActivity(intent);
+                                                }
+                                            })
+                                    .setNegativeButton("Нет",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
+                        else
+                        {
+                            //Intent intent = new Intent(MainActivity.this, AddwordActivity.class);
+                            Intent intent = new Intent(MainActivity.this, WordlistActivity.class);
+                            intent.putExtra("ID", currentUserId);
+                            intent.putExtra("NAME", text.getText().toString());
+                            startActivity(intent);
+                        }
+                        break;
                     case R.id.openListBtn:
                         if (currentUserId==0)
                         {
