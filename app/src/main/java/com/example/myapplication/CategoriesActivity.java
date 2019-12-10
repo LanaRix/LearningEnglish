@@ -40,7 +40,7 @@ public class CategoriesActivity extends AppCompatActivity {
         CategoriesList = (ListView) findViewById(R.id.listview);
 
         databaseHelper = new DatabaseHelper(this);
-        InitList();
+        InitList(currentUserId);
 
         CategoriesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -63,7 +63,7 @@ public class CategoriesActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().equals("")){
                     //сброс listview
-                    InitList();
+                    InitList(currentUserId);
                 }
                 else {
                     // perform search
@@ -100,7 +100,7 @@ public class CategoriesActivity extends AppCompatActivity {
         CategoriesList.setAdapter(categoryAdapter);
         //adapter.notifyDataSetChanged(); //не работает для созданных вручную адаптеров
     }
-    public void InitList()
+    public ArrayList<CategoryStruct> InitList(int currentUserId)
     {
         // открываем подключение
         db = databaseHelper.getReadableDatabase();
@@ -133,5 +133,7 @@ public class CategoriesActivity extends AppCompatActivity {
         //создаем адаптер
         //categoryAdapter = new CategoryAdapter(this, categoryStruct);
         //CategoriesList.setAdapter(categoryAdapter);
+
+        return categoryStruct;
     }
 }

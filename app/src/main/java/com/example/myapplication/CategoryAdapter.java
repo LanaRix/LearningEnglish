@@ -20,6 +20,11 @@ public class CategoryAdapter extends BaseAdapter {
         lInflater = (LayoutInflater) ctx
                 .getSystemService(context.LAYOUT_INFLATER_SERVICE);
     }
+    CategoryAdapter(){}
+    CategoryAdapter(ArrayList<CategoryStruct> categoryStructs)
+    {
+        objects=categoryStructs;
+    }
 
     //количество элементов
     @Override
